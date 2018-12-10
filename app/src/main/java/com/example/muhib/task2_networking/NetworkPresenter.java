@@ -2,6 +2,7 @@ package com.example.muhib.task2_networking;
 
 import android.content.Context;
 import android.util.Log;
+import android.webkit.URLUtil;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -17,7 +18,7 @@ import com.android.volley.VolleyError;
 import org.json.JSONObject;
 
 import java.util.Map;
-import java.util.regex.Pattern;
+
 
 public class NetworkPresenter {
 ResultInterface mResultInterface;
@@ -35,15 +36,20 @@ public  NetworkHandling handling;
 
     private void getData(int method, String url, Map<String,String> params, Map<String,String> headers) {
         if(!url.isEmpty()) {
-            mRequestQueue = Singleton.getInstance().getmRequestQueue();
-            handling = new NetworkHandling(method, url, params, headers, this.success(), this.error());
-            handling.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            handling.setTag(tag);
-            mRequestQueue.add(handling);
+            if(URLUtil.isValidUrl(url)) {
+                mRequestQueue = Singleton.getInstance().getmRequestQueue();
+                handling = new NetworkHandling(method, url, params, headers, this.success(), this.error());
+                handling.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                handling.setTag(tag);
+                mRequestQueue.add(handling);
+            }
+            else {
+                mResultInterface.OnFailure("Url is not Valid");
+            }
         }
         else
         {
-            mResultInterface.OnFailure("Please enter Correct Url");
+            mResultInterface.OnFailure("Please enter  Url");
         }
 
     }
