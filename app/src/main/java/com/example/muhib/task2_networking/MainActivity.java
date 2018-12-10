@@ -13,8 +13,8 @@ public class MainActivity extends AppCompatActivity implements ResultInterface{
     int Get=Request.Method.GET;
     int Post=Request.Method.POST;
     String url = "http://webdevelopmentreviews.net/carhires/webservice/lang_list";
-    HashMap<String, String> headers = new HashMap<String, String>();
-    HashMap<String, String> params = new HashMap<String, String>();
+    HashMap<String, String> headers = new HashMap<>();
+    HashMap<String, String> params = new HashMap<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements ResultInterface{
         params=getParams();
         headers=getheaders();
         new NetworkPresenter().Requests(this,this,Post,url,params,headers,"lan_list");
-
     }
 
     private HashMap<String,String> getheaders() {
