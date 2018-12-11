@@ -48,7 +48,6 @@ public class Responses {
             private String language_id;
             private String language_code;
             private String language_name;
-
             public String getLanguage_id() {
                 return language_id;
             }
@@ -64,7 +63,6 @@ public class Responses {
             public void setLanguage_code(String language_code) {
                 this.language_code = language_code;
             }
-
             public String getLanguage_name() {
                 return language_name;
             }

@@ -49,7 +49,7 @@ public  NetworkHandling handling;
         }
         else
         {
-            mResultInterface.OnFailure("Please enter  Url");
+            mResultInterface.OnFailure("Please enter Url");
         }
 
     }
@@ -84,8 +84,6 @@ public  NetworkHandling handling;
                     mResultInterface.OnFailure("response could not be parsed");
                     Log.d("error","response could not be parsed");//server response could not be parsed
                 }
-
-          //  Log.d("error",""+error.networkResponse.statusCode);
             }
         };
     }
@@ -94,7 +92,6 @@ public  NetworkHandling handling;
         return new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
                 mResultInterface.OnSuccess(response,tag);
             }
         };

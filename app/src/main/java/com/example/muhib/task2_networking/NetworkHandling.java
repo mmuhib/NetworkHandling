@@ -1,7 +1,5 @@
 package com.example.muhib.task2_networking;
 
-import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -27,6 +25,7 @@ public class NetworkHandling extends Request<JSONObject> {
         this.listener=reponseListener;
         this.params=params;
         this.headers=headers;
+
     }
 
     @Override

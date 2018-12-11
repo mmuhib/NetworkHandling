@@ -21,7 +21,9 @@ public class MainActivity extends AppCompatActivity implements ResultInterface{
         setContentView(R.layout.activity_main);
         params=getParams();
         headers=getheaders();
+
         new NetworkPresenter().Requests(this,this,Post,url,params,headers,"lan_list");
+
     }
 
     private HashMap<String,String> getheaders() {
@@ -44,12 +46,12 @@ public class MainActivity extends AppCompatActivity implements ResultInterface{
     @Override
     public void OnFailure(String responseMessage) {
     Toast.makeText(getApplicationContext(),responseMessage,Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-
         try {
             mRequestQueue.cancelAll("lan_list");
         } catch (Exception e) {

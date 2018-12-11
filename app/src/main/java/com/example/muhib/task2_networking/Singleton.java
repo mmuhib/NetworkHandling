@@ -8,7 +8,7 @@ public class Singleton {
     private RequestQueue mRequestQueue;
 
     public Singleton() {
-
+        //Constructor
         mRequestQueue=Volley.newRequestQueue(MyApplication.getAppContext());
     }
     public static Singleton getInstance()

@@ -5,4 +5,5 @@ import org.json.JSONObject;
 public interface ResultInterface {
         void OnSuccess(JSONObject result, String type);
         void OnFailure(String responseMessage);
+
 }
