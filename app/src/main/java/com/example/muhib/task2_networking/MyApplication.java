@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 public class MyApplication extends Application {
-    public static MyApplication sInstance;
+    private static MyApplication sInstance;
 
     @Override
     public void onCreate() {

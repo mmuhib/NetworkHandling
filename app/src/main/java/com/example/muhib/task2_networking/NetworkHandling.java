@@ -1,6 +1,6 @@
 package com.example.muhib.task2_networking;
 
-import android.support.annotation.Nullable;
+
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -9,6 +9,7 @@ import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 
 import org.json.JSONException;
@@ -27,6 +28,7 @@ public class NetworkHandling extends Request<JSONObject> {
         this.listener=reponseListener;
         this.params=params;
         this.headers=headers;
+
     }
 
     @Override
@@ -36,6 +38,7 @@ public class NetworkHandling extends Request<JSONObject> {
             return Response.success(new JSONObject(jsonString),HttpHeaderParser.parseCacheHeaders(response));
         }
         catch (UnsupportedEncodingException e) {
+
             return Response.error(new ParseError(e))  ;
         }
             catch (JSONException e) {
@@ -44,11 +47,17 @@ public class NetworkHandling extends Request<JSONObject> {
     }
 
 
+    @Override
+    protected VolleyError parseNetworkError(VolleyError volleyError) {
+        return super.parseNetworkError(volleyError);
+    }
 
     @Override
     protected void deliverResponse(JSONObject response) {
 
         listener.onResponse(response);
+        Log.d("response",response.toString());
+
     }
 
     @Override
@@ -65,4 +74,6 @@ public class NetworkHandling extends Request<JSONObject> {
     public Priority getPriority() {
         return super.getPriority();
     }
+
+
 }

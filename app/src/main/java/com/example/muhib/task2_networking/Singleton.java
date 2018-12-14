@@ -4,11 +4,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
 public class Singleton {
-    public static Singleton instance=null;
+    private static Singleton instance=null;
     private RequestQueue mRequestQueue;
 
     public Singleton() {
-
+        //Constructor
         mRequestQueue=Volley.newRequestQueue(MyApplication.getAppContext());
     }
     public static Singleton getInstance()
